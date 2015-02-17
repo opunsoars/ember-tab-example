@@ -1,3 +1,48 @@
-<h2 id="title">Welcome to Ember.js</h2>
 
-{{outlet}}
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Project name</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>
+
+<div class="container">
+
+    <h2>Tabs</h2>
+
+    <div role="tabpanel">
+
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+            {{#each tab in tabs}}
+              {{!-- Note: we use the link-to helper to generate the <li>, so that its 'active' class is automatically set.  --}}
+              {{#link-to "tab" tab tagName='li' activeClass='active'}}
+                {{#link-to "tab" tab}}
+                  {{tab.name}}
+                {{/link-to}}
+              {{/link-to}}
+            {{/each}}
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active">
+              {{outlet}}
+            </div>
+        </div>
+
+    </div>
+
+</div><!-- /.container -->
+
