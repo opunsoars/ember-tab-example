@@ -6,7 +6,10 @@ var Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.route("tab", {path : 'tab/:id'});
+  this.resource('messages', function() {
+    this.route('new');
+    this.route('tab', { path: '/:id' });
+  });
 });
 
 export default Router;

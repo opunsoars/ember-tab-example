@@ -1,0 +1,36 @@
+<h2>Messages</h2>
+
+<section>
+  <button class='btn btn-default' {{action 'createMessage'}}>Create message</button>
+</section>  
+
+
+{{#if this.length}}
+    <section role="tabpanel">
+
+      <!-- Nav tabs -->
+      <ul class="nav nav-tabs" role="tablist">
+      {{#each message in this}}
+          {{!-- Note: we use the link-to helper to generate the <li>, so that its 'active' class is automatically set.  --}}
+          {{#link-to "messages.tab" message tagName='li' activeClass='active'}}
+            {{#link-to "messages.tab" message}}
+              {{message.title}}
+            {{/link-to}}
+          {{/link-to}}
+        {{/each}}
+      </ul>
+
+      <!-- Tab panes -->
+      <div class="tab-content">
+          <div role="tabpanel" class="tab-pane active">
+            {{outlet}}
+          </div>
+      </div>
+
+  </section>
+{{else}}
+<section>
+  <p>No messages available</p>
+</section>
+{{/if}}
+
